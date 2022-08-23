@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ToDo.List.Api.Repositories;
 
 namespace ToDo.List.Api.Controllers
 {
@@ -6,17 +7,17 @@ namespace ToDo.List.Api.Controllers
     [Route("[controller]")]
     public class ToDoController : ControllerBase
     {
-        private readonly IEnumerable<ToDo> _toDos;
-        
-        public ToDoController()
+        private readonly IToDoRepository toDoRepository;
+
+        public ToDoController(IToDoRepository toDoRepository)
         {
-            _toDos = new List<ToDo>();
+            this.toDoRepository = toDoRepository;
         }
 
         [HttpGet]
-        public IEnumerable<ToDo> Get()
+        public IEnumerable<Data.Models.ToDo> Get()
         {
-            return _toDos;
+            return toDoRepository.GetToDos();
         }
 
         [HttpPost]

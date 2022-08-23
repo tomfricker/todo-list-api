@@ -1,4 +1,4 @@
-﻿namespace ToDo.List.Api
+﻿namespace ToDo.List.Data.Enums
 {
     public enum State
     {
