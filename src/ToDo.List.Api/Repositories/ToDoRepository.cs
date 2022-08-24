@@ -19,6 +19,8 @@ namespace ToDo.List.Api.Repositories
 
         public void AddToDo(Data.Models.ToDo toDo)
         {
+            toDo.Id = Guid.NewGuid();
+
             toDoDb.AddToDo(toDo);
         }
 
