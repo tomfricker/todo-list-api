@@ -21,8 +21,10 @@ namespace ToDo.List.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public IActionResult Post([FromBody]Data.Models.ToDo toDo)
         {
+            toDoRepository.AddToDo(toDo);
+
             return Ok();
         }
 

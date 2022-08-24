@@ -29,7 +29,7 @@ namespace ToDo.List.Api.Tests.Unit
         [Fact]
         public void ReturnOkResult_WhenPostCalled()
         {
-            var result = toDoController.Post();
+            var result = toDoController.Post(new Data.Models.ToDo());
 
             Assert.NotNull(result);
             Assert.IsType<OkResult>(result);

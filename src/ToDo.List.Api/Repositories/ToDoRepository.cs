@@ -1,15 +1,30 @@
-﻿namespace ToDo.List.Api.Repositories
+﻿using ToDo.List.Data;
+
+namespace ToDo.List.Api.Repositories
 {
     public interface IToDoRepository
     {
         IEnumerable<Data.Models.ToDo> GetToDos();
+        void AddToDo(Data.Models.ToDo toDo);
     }
 
     public class ToDoRepository : IToDoRepository
     {
+        private readonly IToDoDb toDoDb;
+
+        public ToDoRepository(IToDoDb toDoDb)
+        {
+            this.toDoDb = toDoDb;
+        }
+
+        public void AddToDo(Data.Models.ToDo toDo)
+        {
+            toDoDb.AddToDo(toDo);
+        }
+
         public IEnumerable<Data.Models.ToDo> GetToDos()
         {
-            throw new NotImplementedException();
+            return toDoDb.GetToDos();
         }
     }
 }
