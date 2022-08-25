@@ -2,8 +2,9 @@
 {
     public interface IToDoDb
     {
-        void AddToDo(Data.Models.ToDo toDo);
+        void AddToDo(Models.ToDo toDo);
         IEnumerable<Models.ToDo> GetToDos();
+        Models.ToDo GetToDo(Models.ToDo toDo);
     }
 
     public class ToDoDb : IToDoDb
@@ -18,6 +19,11 @@
         public IEnumerable<Models.ToDo> GetToDos()
         {
             return toDos;
+        }
+
+        public Models.ToDo GetToDo(Models.ToDo toDo)
+        {
+            return toDos.FirstOrDefault(t => t.Id == toDo.Id);
         }
     }
 }

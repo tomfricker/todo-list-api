@@ -29,8 +29,10 @@ namespace ToDo.List.Api.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put()
+        public IActionResult Put([FromBody]Data.Models.ToDo toDo)
         {
+            toDoRepository.UpdateToDo(toDo);
+
             return Ok();
         }
     }

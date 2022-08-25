@@ -44,9 +44,26 @@ namespace ToDo.List.Api.Tests.Unit
             toDoRepository.AddToDo(toDo);
 
             var toDoListResult = toDoTestFixture.GetToDos();
-            var toDoIds = toDoListResult.Select(t => t.Id);
 
-            Assert.DoesNotContain(Guid.Empty, toDoIds);
+            Assert.DoesNotContain(toDoListResult, t => t.Id == Guid.Empty);
+        }
+
+        [Fact]
+        public void UpdateToDo_WhenUpdateToDoCalled()
+        {
+            var toDo = toDoRepository.GetToDos().FirstOrDefault();
+
+            var updatedToDo = new Data.Models.ToDo
+            {
+                Id = toDo.Id,
+                Description = "New Description",
+                State = Data.Enums.State.Completed
+            };
+
+            toDoRepository.UpdateToDo(updatedToDo);
+
+            Assert.Equal(toDo.Description, updatedToDo.Description);
+            Assert.Equal(toDo.State, updatedToDo.State);
         }
     }
 }

@@ -5,27 +5,32 @@ namespace ToDo.List.Tests.Unit.TestData
 {
     public class ToDoTestFixture : IToDoDb
     {
-        private IList<Data.Models.ToDo> toDos;
+        private readonly IToDoDb toDoDb;
 
         public ToDoTestFixture()
         {
-            toDos = new List<Data.Models.ToDo>
+            toDoDb = new ToDoDb();
+
+            for (var i = 0; i < 4; i++)
             {
-                new Data.Models.ToDo { Id = Guid.NewGuid(), Description = "Task 1", State = State.Pending },
-                new Data.Models.ToDo { Id = Guid.NewGuid(), Description = "Task 2", State = State.Pending },
-                new Data.Models.ToDo { Id = Guid.NewGuid(), Description = "Task 3", State = State.Pending },
-                new Data.Models.ToDo { Id = Guid.NewGuid(), Description = "Task 4", State = State.Completed }
-            };
+                var toDo = new Data.Models.ToDo { Id = Guid.NewGuid(), Description = $"Task {i}", State = State.Pending };
+                toDoDb.AddToDo(toDo);
+            }            
         }
 
         public void AddToDo(Data.Models.ToDo toDo)
         {
-            toDos.Add(toDo);
+            toDoDb.AddToDo(toDo);
         }
 
         public IEnumerable<Data.Models.ToDo> GetToDos()
         {
-            return toDos;
+            return toDoDb.GetToDos();
+        }
+
+        public Data.Models.ToDo GetToDo(Data.Models.ToDo toDo)
+        {
+            return toDoDb.GetToDo(toDo);
         }
     }
 }
