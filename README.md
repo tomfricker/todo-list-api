@@ -8,7 +8,9 @@
 1. Once the repo has been cloned open the command line in windows, bash shell in MacOS or Linux.
 2. Navigate to the following folder ./src/ToDo.List.Api
 3. Run the following commands in order
-  a. dotnet restore
-  b. dotnet build
-  c. dotnet run
+<ol type="a">
+  <li>dotnet restore</li>
+  <li>dotnet build</li>
+  <li>dotnet run</li>
+</ol>
 4. Make note of the localhost port number running the https endpoint i.e. https://localhost:7190
