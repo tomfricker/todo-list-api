@@ -1,7 +1,7 @@
 # todo-list-api
 
 # Dependencies
-.net 6 should be installed before attempting to build and run
+.net 6 should be installed before attempting to build and run https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 
 # Build and run steps
 
