@@ -38,7 +38,7 @@ namespace ToDo.List.Api.Tests.Unit
         [Fact]
         public void ReturnOkResult_WhenPutCalled()
         {
-            var result = toDoController.Put();
+            var result = toDoController.Put(new Data.Models.ToDo());
 
             Assert.NotNull(result);
             Assert.IsType<OkResult>(result);
